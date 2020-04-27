@@ -18,6 +18,7 @@ All contributions are welcome:
 - [PDF](https://github.com/wilfredinni/Python-cheatsheet/raw/master/python_cheat_sheet.pdf)
 - [Jupyter Notebook](https://mybinder.org/v2/gh/wilfredinni/python-cheatsheet/master?filepath=jupyter_notebooks)
 
+## Python Cheatsheet
 
 ## Python Basics
 
@@ -143,19 +144,6 @@ Code with a comment:
 
 ```python
 a = 1  # initialization
-```
-
-Please note the two spaces in front of the comment.
-
-Function docstring:
-
-```python
-def foo():
-    """
-    This is a function docstring
-    You can also use:
-    ''' Function Docstring '''
-    """
 ```
 
 [*Return to the Top*](#python-cheatsheet)
