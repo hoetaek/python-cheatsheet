@@ -2,15 +2,6 @@
 
 Basic cheatsheet for Python mostly based on the book written by Al Sweigart, [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) under the [Creative Commons license](https://creativecommons.org/licenses/by-nc-sa/3.0/) and many other sources.
 
-## Contribute
-
-All contributions are welcome:
-
-- Read the issues, Fork the project and do a Pull Request.
-- Request a new topic creating a `New issue` with the  `enhancement` tag.
-- Find any kind of errors in the cheat sheet and create a `New issue` with the details or fork the project and do a Pull Request.
-- Suggest a better or more pythonic way for existing examples.
-
 ## Read It
 
 - [Website](https://www.pythoncheatsheet.org)
@@ -22,9 +13,9 @@ All contributions are welcome:
 
 ## Python Basics
 
-### Math Operators
+### 연산 기호
 
-From **Highest** to **Lowest** precedence:
+From **Highest** to **Lowest** 우선순위:
 
 | Operators | Operation        | Example         |
 | --------- | ---------------- | --------------- |
@@ -80,18 +71,18 @@ Examples of expressions in the interactive shell:
 
 [*Return to the Top*](#python-cheatsheet)
 
-### String Concatenation and Replication
+### String 합치기와 복제
 
-String concatenation:
+String 합치기:
 
 ```python
 >>> 'Alice' 'Bob'
 'AliceBob'
 ```
 
-Note: Avoid `+` operator for string concatenation. Prefer string formatting.
+Note: string 합치기를 위해서 `+` 연산기호는 피하도록 한다. string formatting을 선호한다.
 
-String Replication:
+String 복제:
 
 ```python
 >>> 'Alice' * 5
@@ -100,14 +91,13 @@ String Replication:
 
 [*Return to the Top*](#python-cheatsheet)
 
-### Variables
+### 변수
 
-You can name a variable anything as long as it obeys the following three rules:
+다음과 같은 규칙들에 부합하는 한 변수의 이름들을 마음대로 지어도 괜찮다:
 
-1. It can be only one word.
-1. It can use only letters, numbers, and the underscore (`_`) character.
-1. It can’t begin with a number.
-1. Variable name starting with an underscore (`_`) are considered as "unuseful`.
+1. 한 단어여만 한다.
+1. 글자(letters), 숫자들, 그리고 언더바(underscore (`_`)) 문자로 이루어져 있다.
+1. 숫자로 시작하면 안된다.
 
 Example:
 
@@ -117,15 +107,9 @@ Example:
 'Hello'
 ```
 
-```python
->>> _spam = 'Hello'
-```
-
-`_spam` should not be used again in the code.
-
 [*Return to the Top*](#python-cheatsheet)
 
-### Comments
+### Comments(주석)
 
 Inline comment:
 
@@ -148,7 +132,8 @@ a = 1  # initialization
 
 [*Return to the Top*](#python-cheatsheet)
 
-### The print() Function
+### print() 함수
+변수의 값 혹은 데이터 값을 출력한다.
 
 ```python
 >>> print('Hello world!')
@@ -166,7 +151,7 @@ Hello world! 1
 
 ### The str(), int(), and float() Functions
 
-Integer to String or Float:
+Integer(정수) to String(문자열) or Float(소수):
 
 ```python
 >>> str(29)
@@ -196,6 +181,185 @@ Float to Integer:
 ```
 
 [*Return to the Top*](#python-cheatsheet)
+
+
+## Lists
+리스트는 다음과 같이 대괄호\[\] 를 통해서 표현한다.
+
+```python
+>>> spam = ['cat', 'bat', 'rat', 'elephant']
+
+>>> spam
+['cat', 'bat', 'rat', 'elephant']
+```
+
+[*Return to the Top*](#python-cheatsheet)
+
+### Index를 이용하여 List 안의 개별 값들을 가져오기
+프로그래밍을 할 때는 순서가 1부터 시작하지 않는다. 항상 0부터 시작한다는 것을 마음 속에 기억하고 익숙해져야 한다.
+spam 리스트에서 0번째 요소의 값은 'cat'이다.
+spam 리스트에서 1번째 요소의 값은 'bat'이다.
+spam 리스트에서 2번째 요소의 값은 'rat'이다.
+spam 리스트에서 3번째 요소의 값은 'elephant'이다.
+
+리스트에서 각 요소에 접근하는 방법은 다음과 같다.
+
+```python
+>>> spam = ['cat', 'bat', 'rat', 'elephant']
+>>> spam[0]
+'cat'
+```
+
+```python
+>>> spam[1]
+'bat'
+```
+
+```python
+>>> spam[2]
+'rat'
+```
+
+```python
+>>> spam[3]
+'elephant'
+```
+
+[*Return to the Top*](#python-cheatsheet)
+
+### 음수 Index
+
+음수 Index를 이용하면 마지막 요소들부터 접근할 수 있다.
+
+```python
+>>> spam = ['cat', 'bat', 'rat', 'elephant']
+>>> spam[-1]
+'elephant'
+```
+
+```python
+>>> spam[-3]
+'bat'
+```
+
+```python
+>>> 'The {} is afraid of the {}.'.format(spam[-1], spam[-3])
+'The elephant is afraid of the bat.'
+```
+
+[*Return to the Top*](#python-cheatsheet)
+
+### 리스트 슬라이싱과 '부분'
+
+```python
+>>> spam = ['cat', 'bat', 'rat', 'elephant']
+>>> spam[0:4]
+['cat', 'bat', 'rat', 'elephant']
+```
+
+```python
+>>> spam[1:3]
+['bat', 'rat']
+```
+
+```python
+>>> spam[0:-1]
+['cat', 'bat', 'rat']
+```
+
+```python
+>>> spam = ['cat', 'bat', 'rat', 'elephant']
+>>> spam[:2]
+['cat', 'bat']
+```
+
+```python
+>>> spam[1:]
+['bat', 'rat', 'elephant']
+```
+
+Slicing the complete list will perform a copy:
+
+```python
+>>> spam2 = spam[:]
+['cat', 'bat', 'rat', 'elephant']
+>>> spam.append('dog')
+>>> spam
+['cat', 'bat', 'rat', 'elephant', 'dog']
+>>> spam2
+['cat', 'bat', 'rat', 'elephant']
+```
+
+[*Return to the Top*](#python-cheatsheet)
+
+### Getting a List’s Length with len()
+
+```python
+>>> spam = ['cat', 'dog', 'moose']
+>>> len(spam)
+3
+```
+
+[*Return to the Top*](#python-cheatsheet)
+
+### Changing Values in a List with Indexes
+
+```python
+>>> spam = ['cat', 'bat', 'rat', 'elephant']
+>>> spam[1] = 'aardvark'
+
+>>> spam
+['cat', 'aardvark', 'rat', 'elephant']
+
+>>> spam[2] = spam[1]
+
+>>> spam
+['cat', 'aardvark', 'aardvark', 'elephant']
+
+>>> spam[-1] = 12345
+
+>>> spam
+['cat', 'aardvark', 'aardvark', 12345]
+```
+
+[*Return to the Top*](#python-cheatsheet)
+
+### List Concatenation and List Replication
+
+```python
+>>> [1, 2, 3] + ['A', 'B', 'C']
+[1, 2, 3, 'A', 'B', 'C']
+
+>>> ['X', 'Y', 'Z'] * 3
+['X', 'Y', 'Z', 'X', 'Y', 'Z', 'X', 'Y', 'Z']
+
+>>> spam = [1, 2, 3]
+
+>>> spam = spam + ['A', 'B', 'C']
+
+>>> spam
+[1, 2, 3, 'A', 'B', 'C']
+```
+
+[*Return to the Top*](#python-cheatsheet)
+
+### Removing Values from Lists with del Statements
+
+```python
+>>> spam = ['cat', 'bat', 'rat', 'elephant']
+>>> del spam[2]
+>>> spam
+['cat', 'bat', 'elephant']
+```
+
+```python
+>>> del spam[2]
+>>> spam
+['cat', 'bat']
+```
+
+[*Return to the Top*](#python-cheatsheet)
+
 
 ### for Loops
 ```python
@@ -775,172 +939,6 @@ None
 
 [*Return to the Top*](#python-cheatsheet)
 
-## Lists
-
-```python
->>> spam = ['cat', 'bat', 'rat', 'elephant']
-
->>> spam
-['cat', 'bat', 'rat', 'elephant']
-```
-
-[*Return to the Top*](#python-cheatsheet)
-
-### Getting Individual Values in a List with Indexes
-
-```python
->>> spam = ['cat', 'bat', 'rat', 'elephant']
->>> spam[0]
-'cat'
-```
-
-```python
->>> spam[1]
-'bat'
-```
-
-```python
->>> spam[2]
-'rat'
-```
-
-```python
->>> spam[3]
-'elephant'
-```
-
-[*Return to the Top*](#python-cheatsheet)
-
-### Negative Indexes
-
-```python
->>> spam = ['cat', 'bat', 'rat', 'elephant']
->>> spam[-1]
-'elephant'
-```
-
-```python
->>> spam[-3]
-'bat'
-```
-
-```python
->>> 'The {} is afraid of the {}.'.format(spam[-1], spam[-3])
-'The elephant is afraid of the bat.'
-```
-
-[*Return to the Top*](#python-cheatsheet)
-
-### Getting Sublists with Slices
-
-```python
->>> spam = ['cat', 'bat', 'rat', 'elephant']
->>> spam[0:4]
-['cat', 'bat', 'rat', 'elephant']
-```
-
-```python
->>> spam[1:3]
-['bat', 'rat']
-```
-
-```python
->>> spam[0:-1]
-['cat', 'bat', 'rat']
-```
-
-```python
->>> spam = ['cat', 'bat', 'rat', 'elephant']
->>> spam[:2]
-['cat', 'bat']
-```
-
-```python
->>> spam[1:]
-['bat', 'rat', 'elephant']
-```
-
-Slicing the complete list will perform a copy:
-
-```python
->>> spam2 = spam[:]
-['cat', 'bat', 'rat', 'elephant']
->>> spam.append('dog')
->>> spam
-['cat', 'bat', 'rat', 'elephant', 'dog']
->>> spam2
-['cat', 'bat', 'rat', 'elephant']
-```
-
-[*Return to the Top*](#python-cheatsheet)
-
-### Getting a List’s Length with len()
-
-```python
->>> spam = ['cat', 'dog', 'moose']
->>> len(spam)
-3
-```
-
-[*Return to the Top*](#python-cheatsheet)
-
-### Changing Values in a List with Indexes
-
-```python
->>> spam = ['cat', 'bat', 'rat', 'elephant']
->>> spam[1] = 'aardvark'
-
->>> spam
-['cat', 'aardvark', 'rat', 'elephant']
-
->>> spam[2] = spam[1]
-
->>> spam
-['cat', 'aardvark', 'aardvark', 'elephant']
-
->>> spam[-1] = 12345
-
->>> spam
-['cat', 'aardvark', 'aardvark', 12345]
-```
-
-[*Return to the Top*](#python-cheatsheet)
-
-### List Concatenation and List Replication
-
-```python
->>> [1, 2, 3] + ['A', 'B', 'C']
-[1, 2, 3, 'A', 'B', 'C']
-
->>> ['X', 'Y', 'Z'] * 3
-['X', 'Y', 'Z', 'X', 'Y', 'Z', 'X', 'Y', 'Z']
-
->>> spam = [1, 2, 3]
-
->>> spam = spam + ['A', 'B', 'C']
-
->>> spam
-[1, 2, 3, 'A', 'B', 'C']
-```
-
-[*Return to the Top*](#python-cheatsheet)
-
-### Removing Values from Lists with del Statements
-
-```python
->>> spam = ['cat', 'bat', 'rat', 'elephant']
->>> del spam[2]
->>> spam
-['cat', 'bat', 'elephant']
-```
-
-```python
->>> del spam[2]
->>> spam
-['cat', 'bat']
-```
-
-[*Return to the Top*](#python-cheatsheet)
 
 ### Using for Loops with Lists
 
