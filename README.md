@@ -11,11 +11,9 @@ Basic cheatsheet for Python mostly based on the book written by Al Sweigart, [Au
 
 ## Python Cheatsheet
 
-## Python Basics
-
 ### 연산 기호
 
-From **Highest** to **Lowest** 우선순위:
+From **Highest** to **Lowest** 연산 우선순위:
 
 | Operators | Operation        | Example         |
 | --------- | ---------------- | --------------- |
@@ -27,7 +25,7 @@ From **Highest** to **Lowest** 우선순위:
 | -         | Subtraction      | `5 - 2 = 3`     |
 | +         | Addition         | `2 + 2 = 4`     |
 
-Examples of expressions in the interactive shell:
+interactive shell을 이용한 :
 
 ```python
 >>> 2 + 3 * 6
@@ -63,7 +61,7 @@ Examples of expressions in the interactive shell:
 
 ### Data Types
 
-| Data Type              | Examples                                  |
+| 데이터 타입              | Examples                                  |
 | ---------------------- | ----------------------------------------- |
 | Integers               | `-2, -1, 0, 1, 2, 3, 4, 5`                |
 | Floating-point numbers | `-1.25, -1.0, --0.5, 0.0, 0.5, 1.0, 1.25` |
@@ -96,7 +94,7 @@ String 복제:
 다음과 같은 규칙들에 부합하는 한 변수의 이름들을 마음대로 지어도 괜찮다:
 
 1. 한 단어여만 한다.
-1. 글자(letters), 숫자들, 그리고 언더바(underscore (`_`)) 문자로 이루어져 있다.
+1. 글자(letters), 숫자들, 그리고 언더바(`_`) 문자로 이루어져 있다.
 1. 숫자로 시작하면 안된다.
 
 Example:
@@ -111,20 +109,24 @@ Example:
 
 ### Comments(주석)
 
-Inline comment:
+한줄 주석:
 
 ```python
 # This is a comment
 ```
 
-Multiline comment:
+여러 줄 주석:
 
 ```Python
 # This is a
 # multiline comment
+
+"""
+여러 줄 주석을 표현하는 두번째 방법입니다.
+"""
 ```
 
-Code with a comment:
+주석이 달려있는 코드:
 
 ```python
 a = 1  # initialization
@@ -249,7 +251,7 @@ spam 리스트에서 3번째 요소의 값은 'elephant'이다.
 
 [*Return to the Top*](#python-cheatsheet)
 
-### 리스트 슬라이싱과 '부분'
+### 리스트 슬라이싱과 '부분 리스트'
 
 ```python
 >>> spam = ['cat', 'bat', 'rat', 'elephant']
@@ -278,7 +280,7 @@ spam 리스트에서 3번째 요소의 값은 'elephant'이다.
 ['bat', 'rat', 'elephant']
 ```
 
-Slicing the complete list will perform a copy:
+전체 리스트에 대한 슬라이싱은 리스트를 복사한다:
 
 ```python
 >>> spam2 = spam[:]
@@ -292,7 +294,7 @@ Slicing the complete list will perform a copy:
 
 [*Return to the Top*](#python-cheatsheet)
 
-### Getting a List’s Length with len()
+### len() 함수를 통해 리스트의 길이(크기)를 가져올 수 있다.
 
 ```python
 >>> spam = ['cat', 'dog', 'moose']
@@ -302,7 +304,7 @@ Slicing the complete list will perform a copy:
 
 [*Return to the Top*](#python-cheatsheet)
 
-### Changing Values in a List with Indexes
+### Indexe를 이용하여 리스트 안의 값들을 바꾸기
 
 ```python
 >>> spam = ['cat', 'bat', 'rat', 'elephant']
@@ -324,7 +326,7 @@ Slicing the complete list will perform a copy:
 
 [*Return to the Top*](#python-cheatsheet)
 
-### List Concatenation and List Replication
+### List 합치기 and List 복제
 
 ```python
 >>> [1, 2, 3] + ['A', 'B', 'C']
@@ -343,7 +345,7 @@ Slicing the complete list will perform a copy:
 
 [*Return to the Top*](#python-cheatsheet)
 
-### Removing Values from Lists with del Statements
+### del Statement를 사용하여 리스트 안의 값들을 제거하기
 
 ```python
 >>> spam = ['cat', 'bat', 'rat', 'elephant']
@@ -361,7 +363,11 @@ Slicing the complete list will perform a copy:
 [*Return to the Top*](#python-cheatsheet)
 
 
-### for Loops
+### for 반복문
+
+반복 가능한 객체들로부터 하나씩 값들을 꺼내어 아래 코드를 반복 실행한다.
+문법에서 콜론(:)과 들여쓰기를 주의해야 합니다.
+
 ```python
 >>> print('My name is')
 >>> for i in [1, 2, 3]:
@@ -370,6 +376,28 @@ My name is
 Jimmy Three Times (1)
 Jimmy Three Times (2)
 Jimmy Three Times (3)
+```
+
+
+```python
+>>> print('My name is')
+>>> for i in [1, 2, 3]:
+>>>     print('반복이 시작됩니다.')
+>>>     print('Jimmy Three Times ' + str(i))
+>>>     print('계속 반복중입니다.')
+>>> print('반복이 종료되었습니다.')
+
+My name is
+반복이 시작됩니다.
+Jimmy Three Times (1)
+계속 반복중입니다.
+반복이 시작됩니다.
+Jimmy Three Times (2)
+계속 반복중입니다.
+반복이 시작됩니다.
+Jimmy Three Times (3)
+계속 반복중입니다.
+반복이 종료되었습니다.
 ```
 
 ```python
@@ -384,8 +412,22 @@ Jimmy Three Times (2)
 Jimmy Three Times (3)
 ```
 
-### for Loops and the range() Function
+### for 반복문과 range() 함수
 
+반복하기 위해서 아래와 같이 코드를 작성할 수 있습니다. 하지만 만약 숫자가 4까지가 아니라 50까지 출력하고 싶다면? 숫자를 50까지 모두 작성하고 있어야 할까요?
+```python
+>>> print('My name is')
+>>> for i in [0, 1, 2, 3, 4]:
+>>>     print('Jimmy Five Times ({})'.format(str(i)))
+My name is
+Jimmy Five Times (0)
+Jimmy Five Times (1)
+Jimmy Five Times (2)
+Jimmy Five Times (3)
+Jimmy Five Times (4)
+```
+
+위 코드는 아래와 같이 바꿀 수 있습니다. 똑같은 기능을 합니다.
 ```python
 >>> print('My name is')
 >>> for i in range(5):
@@ -398,8 +440,20 @@ Jimmy Five Times (3)
 Jimmy Five Times (4)
 ```
 
-The *range()* function can also be called with three arguments. The first two arguments will be the start and stop values, and the third will be the step argument. The step is the amount that the variable is increased by after each iteration.
+숫자 0부터 50까지 출력하고 싶다면 아래와 같이 코드를 작성하면 되겠죠?
+```python
+>>> print('My name is')
+>>> for i in range(51):
+>>>     print('Jimmy Five Times ({})'.format(str(i)))
+My name is
+Jimmy Five Times (0)
+Jimmy Five Times (1)
+Jimmy Five Times (2)
+Jimmy Five Times (3)
+Jimmy Five Times (4)
+```
 
+*range()* 함수는 세 개의 인자를 받을 수 있습니다. 첫번째, 두번째 인자는 시작과 정지하는 값입니다, 세번째는 step 인자입니다. step은 변수가 반복할 때마다 얼마씩 증가하기를 원하는지 그 값을 말합니다.
 ```python
 >>> for i in range(0, 10, 2):
 >>>    print(i)
@@ -410,7 +464,7 @@ The *range()* function can also be called with three arguments. The first two ar
 8
 ```
 
-You can even use a negative number for the step argument to make the for loop count down instead of up.
+심지어 step 인자에 마이너스 값을 넣어서 숫자가 올라가는 대신에 점점 내려가도록 할 수도 있습니다.
 
 ```python
 >>> for i in range(5, -1, -1):
@@ -423,7 +477,7 @@ You can even use a negative number for the step argument to make the for loop co
 0
 ```
 
-### The input() Function
+### input() 함수
 
 Example Code:
 
@@ -438,7 +492,7 @@ It is good to meet you, Al
 
 [*Return to the Top*](#python-cheatsheet)
 
-### The len() Function
+### len() 함수
 
 Evaluates to the integer value of the number of characters in a string:
 
