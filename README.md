@@ -151,9 +151,10 @@ Hello world! 1
 [*Return to the Top*](#python-cheatsheet)
 
 
-### The str(), int(), and float() Functions
+### str(), int(), float() 함수들
 
-Integer(정수) to String(문자열) or Float(소수):
+정수를 문자열 혹은 소수로 변환:
+(str은 문자열, int는 정수, float는 소수를 나타낸다)
 
 ```python
 >>> str(29)
