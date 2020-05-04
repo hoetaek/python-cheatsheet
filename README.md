@@ -162,7 +162,7 @@ Hello world! 1
 ```
 
 ```python
->>> print('I am {} years old.'.format(str(29)))
+>>> print(f'I am {29} years old.')
 I am 29 years old.
 ```
 
